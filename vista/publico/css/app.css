@@ -1,0 +1,22 @@
+#fondocat{
+    border-radius: 15px 108px 200px 51px !important;
+    -moz-border-radius: 15px 108px 200px 51px !important;
+    -webkit-border-radius: 15px 108px 200px 51px !important;
+    border: 0px solid #000000;
+}
+.inicio{
+  background-image: url(../media/img/fondo.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+#login{
+  width: 50%;
+  height: auto;
+  margin: auto;
+  margin-top: 5%;
+  padding: 2%;
+}
+.cita_pie{
+  font-size: 12px;
+}
