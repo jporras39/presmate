@@ -6,20 +6,20 @@ header('Content-Type: text/html; charset=UTF-8');
 $thead='
         <table class="table table-responsive table-bordered">
           <thead class="bg-dark text-light">
-            <th class="text-center" colspan="3"><strong>Codigo del Centro</strong></th>
-            <th class="text-center" colspan="3"><strong>Nombre del Centro</strong></th>
+            <th class="text-center"><strong>Código del Centro</strong></th>
+            <th class="text-center"><strong>Nombre del Centro</strong></th>
           </thead>
           <tbody class="bg-light">
        ';
 $tfin='
       </tbody>
       </table>
-      <!--<small> <p class="card-text text-justify">Para agregar una regional, solo debemos hacer clic en el boton <strong>"Agregar Regional"</strong></p></small>-->
+      <!--<small> <p class="card-text text-justify">Para agregar una regional, solo debemos hacer clic en el botón <strong>"Agregar Regional"</strong></p></small>-->
      ';
 $tvacio='
         <table class="table table-responsive table-bordered">
           <thead class="bg-dark text-light">
-            <th class="text-center"><strong>Codigo del Centro</strong></th>
+            <th class="text-center"><strong>Código del Centro</strong></th>
             <th class="text-center"><strong>Nombre del Centro</strong></th>
           </thead>
           <tbody class="bg-light">

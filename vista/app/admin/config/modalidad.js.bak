@@ -13,7 +13,7 @@ function modalidad(modo)
 		console.log(resultamod);
 	})
 }
-$(document).on('keyup', '#buscaM', function()
+$(document).on('keyup', '#busca', function()
 {
 	var valorBusqueda=$(this).val();
 	if (valorBusqueda!="")

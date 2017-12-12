@@ -8,9 +8,9 @@ function tipousua(tus)
 		data : { tus: tus},
 		})
 
-	.done(function(resultadotu){
-		$("#tbl_tipousua").html(resultadotu);
-		console.log(resultadotu);
+	.done(function(resultado){
+		$("#tbl_tipousua").html(resultado);
+		console.log(resultado);
 	})
 }
 $(document).on('keyup', '#buscaTU', function()

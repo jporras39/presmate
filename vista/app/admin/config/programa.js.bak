@@ -8,12 +8,12 @@ function programa(prog)
 		data : { prog: prog},
 		})
 
-	.done(function(resultaprog){ 
+	.done(function(resultaprog){
 		$("#tbl_prog").html(resultaprog);
 		console.log(resultaprog);
 	})
 }
-$(document).on('keyup', '#buscaPf', function()
+$(document).on('keyup', '#busca', function()
 {
 	var valorBusqueda=$(this).val();
 	if (valorBusqueda!="")
@@ -23,4 +23,3 @@ $(document).on('keyup', '#buscaPf', function()
         programa();
     }
 });
-

@@ -1,0 +1,146 @@
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `NCentro`(IN `VidCentForm` INT, IN `VidRegional` INT, IN `VNombCent` VARCHAR(255))
+BEGIN
+        /*Declaramos una variable "@estado" para asignarle por defecto el valor "Activo":*/
+    SET @estado = "Activo" ;
+        /*Agregamos los valores obtenidos a la tabla:*/
+    INSERT INTO `centform`
+    
+VALUES(
+    `VidCentForm`,
+    `VidRegional`,
+    `VNombCent`,
+    @estado
+) ;
+/*Mostramos el contrato agregado:*/
+SELECT
+    *
+FROM
+    `centform`
+WHERE
+    `idCentForm` = `VidCentForm` ;
+    END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `NModalid`(IN `VidModalidad` INT(11), IN `VNombModa` VARCHAR(45), IN `VDescModa` MEDIUMTEXT)
+    MODIFIES SQL DATA
+BEGIN
+SET @estado= "Activo";
+
+/*Asignamos estado predeterminado:*/
+INSERT INTO `modalidad` VALUES (`VidModalidad`, `VNombModa`, `VDescModa`, @estado);
+
+
+/*Mostramos el Registro insertado:*/
+
+SELECT  `NombModa` FROM `modalidad` WHERE `idModalidad`= `VidModalidad`;
+
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `NPrograma`(IN `VIdPrograma` BIGINT, IN `VNombProg` VARCHAR(250), IN `Vversion` VARCHAR(4), IN `VDescProg` MEDIUMTEXT)
+    MODIFIES SQL DATA
+BEGIN
+    SET
+        @estado = "Activo" ;
+    INSERT INTO `programa`
+VALUES(
+    `VIdPrograma`,
+    `VNombProg`,
+     `Vversion`,
+    `VDescProg`,
+    @estado
+) ;
+SELECT
+    *
+FROM
+    `programa`
+WHERE
+    `idPrograma` = `VIdPrograma` ;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `NResuApr`(
+    IN `VidResuApre` INT,
+    IN `VidModalidad` INT,
+    IN `vidPrograma` BIGINT(20),
+    IN `VidCompetencias` INT,
+    IN `Vresultado` MEDIUMTEXT
+)
+BEGIN
+
+INSERT INTO `resuapre`
+VALUES(
+    `VidResuApre`,
+    `VidModalidad`,
+    `vidPrograma`,
+    `VidCompetencias`,
+    `Vresultado`
+);
+
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `NCompetenc`(IN `VIdCompetencias` INT, IN `VIdPrograma` BIGINT(20), IN `VNomComp` MEDIUMTEXT, IN `VVersComp` VARCHAR(12))
+    MODIFIES SQL DATA
+BEGIN
+        /*Asignamos valor por defecto "Activo" al estado*/
+    SET
+        @estado = "Activo" ;
+        
+ 
+    
+    INSERT INTO `competencias`
+VALUES(
+    `VIdCompetencias`,
+    `VIdPrograma`,
+    `VNomComp`,
+    `VVersComp`,
+    @estado
+) ;
+/*Consltamos valores ingresados*/
+SELECT
+    *
+FROM
+    `competencias`
+WHERE
+    `idCompetencias` = `VIdCompetencias` ;
+    END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `NRegional`(
+in codigo int,
+in nombre varchar(45)
+)
+BEGIN
+
+	insert into regional values (codigo,nombre);
+
+select * from regional;
+
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `NTipoDoc`(IN `VITipoDoc` VARCHAR(4), IN `VDesTipDoc` VARCHAR(45))
+INSERT INTO tipodocu VALUES (`VITipoDoc`, `VDesTipDoc`)$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `NTipoUsua`(
+in `VITipoUsua` int,
+in `VINombTiUs` varchar(45),
+in `VIDescTiUs` MEDIUMTEXT
+)
+BEGIN
+
+	INSERT INTO `tipousua` VALUES (`VITipoUsua`, `VINombTiUs`, `VIDescTiUs`);
+
+
+END$$
+DELIMITER ;

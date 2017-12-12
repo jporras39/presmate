@@ -14,7 +14,7 @@ $thead='
 $tfin='
 </tbody>
 </table>
-<!--<small> <p class="card-text text-justify">Para agregar una regional, solo debemos hacer clic en el boton <strong>"Agregar Regional"</strong></p></small>-->
+<!--<small> <p class="card-text text-justify">Para agregar un Tipo de Usuario , solo debemos hacer clic en el boton <strong>"Agregar Usuario"</strong></p></small>-->
 ';
 $tvacio='
 <table class="table table-responsive table-bordered">
@@ -23,7 +23,7 @@ $tvacio='
 <th class="text-center"><strong>Nombre de Tipo de Usuario</strong></th>
 </thead>
 <tbody class="bg-light">
-<td class="text-center" colspan="2">No se encontraron Tipos de Usuario Registradas</td>
+<td class="text-center" colspan="2">No se encontraron Tipos de Usuario Registrados</td>
 </tbody>
 </table>
 ';
@@ -32,16 +32,17 @@ $codigo=$_POST['codiTiUs'];
 $nombre=$_POST['nombTiUs'];
 $descri=$_POST['describe'];
 
-if (!empty($codigo && $nombre)) {
+if (!empty($codigo && $nombre && $descri)) {
   # Si no están vacias estas variables:
-  $sql="CALL ()";
+  $sql="CALL NTipoUsua('".$codigo."','".$nombre."' ,'".$descri."')";
   $eje=$con->query($sql);
+ 
 }
 
 if (isset($_POST['tus'])) {
   # Si escribo algo en la caja de busqueda:
   $q=$con->real_escape_string($_POST['tus']);
-  $sql="SELECT * FROM TipoUsua where NombTiUs like '%".$q."%'";
+  $sql="SELECT * FROM Tipousua where NombTiUs like '%".$q."%'";
   $eje=$con->query($sql);
   if ($eje->num_rows >0) {
     # Imprimimos la cabeza de la tabla
@@ -49,7 +50,7 @@ if (isset($_POST['tus'])) {
     while ($row=$eje->fetch_row()) {
       # Trae Todas las Coincidencias
       echo '
-      <form id="modregional" method="post">
+      <form id="modtipous" method="post">
         <tr>
         <td class="text-center"><input type="text" readonly name"" class="form-control text-center" value="'.$row[0].'"></td>
         <td class="text-center"><input type="text" name"" class="form-control text-center" value="'.$row[1].'"></td>
@@ -69,7 +70,7 @@ if (isset($_POST['tus'])) {
   }
 }else{
 
-  $qry="SELECT * FROM TipoUsua";
+  $qry="SELECT * FROM Tipousua";
   $eje=$con->query($qry);
   if ($eje->num_rows >0) {
     echo $thead;
